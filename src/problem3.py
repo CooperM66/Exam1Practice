@@ -145,7 +145,7 @@ def problem3a(window, point, n):
         :type n:      int
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # done: 3. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # ------------------------------------------------------------------
     # ------------------------------------------------------------------
@@ -153,6 +153,21 @@ def problem3a(window, point, n):
     #    DIFFICULTY:      7 or 8
     #    TIME ESTIMATE:   20 to 35 minutes.
     # ------------------------------------------------------------------
+
+    thickness = 0
+    for k in range(n):
+        begin = rg.Point(point.x + (k * 20), point.y + (k * 10))
+        end = rg.Point(point.x + (k * 20), point.y + (k * 10) + 50)
+        line = rg.Line(begin, end)
+
+        line.thickness = (k * 2) + 1
+        if line.thickness >= 13:
+            line.thickness = 13
+        thickness = line.thickness + thickness
+        line.attach_to(window)
+        window.render(.5)
+    return (thickness)
+
 
 
 def run_test_problem3b():
@@ -209,7 +224,7 @@ def problem3b(m, point1):
         :type point1: rg.Point
     """
     # ------------------------------------------------------------------
-    # TODO: 4. Implement and test this function.
+    # done: 4. Implement and test this function.
     #          Tests have been written for you (above).
     #
     ####################################################################
@@ -223,6 +238,13 @@ def problem3b(m, point1):
     #    TIME ESTIMATE:   20 to 30 minutes.
     # ------------------------------------------------------------------
 
+    window = rg.RoseWindow(400, 650)
+    thickness = 0
+    for k in range(m):
+        point = rg.Point(point1.x, point1.y + (k * 60))
+        thickness = thickness + problem3a(window, point, ((k * 2) + 3))
+    window.close_on_mouse_click()
+    return thickness
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # ----------------------------------------------------------------------

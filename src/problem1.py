@@ -181,7 +181,7 @@ def problem1a(m, n):
 def run_test_problem1b():
     """ Tests the   problem1b   function. """
     # ------------------------------------------------------------------
-    # TODO: 4. Implement this TEST function.
+    # done: 4. Implement this TEST function.
     #   It TESTS the  problem1b  function defined below.
     #   Include at least **   4   ** tests.
     # ------------------------------------------------------------------
@@ -194,6 +194,35 @@ def run_test_problem1b():
     print('--------------------------------------------------')
     print('Testing the   problem1b   function:')
     print('--------------------------------------------------')
+
+    #test 1 :
+    expected = 5
+    answer = problem1b(3, 5)
+    print()
+    print('test 1 expected:', expected)
+    print('   actual:      ', answer)
+
+    # test 2 :
+    expected = 28
+    answer = problem1b(4, 30)
+    print()
+    print('test 2 expected:', expected)
+    print('   actual:      ', answer)
+
+    # test 3 :
+    expected = 25
+    answer = problem1b(6, 18)
+    print()
+    print('test 3 expected:', expected)
+    print('   actual:      ', answer)
+
+    # test 4 :
+    expected = 9
+    answer = problem1b(5, 7)
+    print()
+    print('test 4 expected:', expected)
+    print('   actual:      ', answer)
+
 
 
 def problem1b(m, f):
@@ -213,7 +242,7 @@ def problem1b(m, f):
            since there are 44 primes between 5 and 200.
      """
     # ------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # done: 5. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #
     ####################################################################
@@ -227,6 +256,11 @@ def problem1b(m, f):
     #    TIME ESTIMATE:   10 to 15 minutes.
     # ------------------------------------------------------------------
 
+    count = 0
+    for k in range (((m*f)-m)+1):
+        if is_prime(k + m) == True:
+            count = count + 1
+    return count
 
 def run_test_problem1c():
     """ Tests the   problem1c   function. """
@@ -310,7 +344,7 @@ def problem1c(n):
            and the sum of the digits in 223092870 is 33.
     """
     # ------------------------------------------------------------------
-    # TODO: 6. Implement and test this function.
+    # done: 6. Implement and test this function.
     #          Tests have been written for you (above).
     #
     ####################################################################
@@ -324,6 +358,13 @@ def problem1c(n):
     #    DIFFICULTY:      7
     #    TIME ESTIMATE:   15 to 20 minutes.
     # ------------------------------------------------------------------
+
+    total = 1
+    for k in range(n-1):
+        x = k + 2
+        if is_prime(x) == True:
+            total = total * x
+    return sum_of_digits(total)
 
 
 # ----------------------------------------------------------------------

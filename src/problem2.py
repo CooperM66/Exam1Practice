@@ -102,7 +102,7 @@ def problem2a(circle, rectangle, window):
       :type window:    rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # done: 2. Implement and test this function.
     #          Tests have been written for you (above).
     # ------------------------------------------------------------------
     # ------------------------------------------------------------------
@@ -110,6 +110,23 @@ def problem2a(circle, rectangle, window):
     #    DIFFICULTY:      6
     #    TIME ESTIMATE:   10 to 15 minutes.
     # ------------------------------------------------------------------
+
+    circle.attach_to(window)
+    rectangle.attach_to(window)
+    window.render(.5)
+
+    window.continue_on_mouse_click()
+
+    begin = rectangle.get_upper_right_corner()
+    end = rectangle.get_lower_left_corner()
+
+    line = rg.Line(begin, end)
+    line.arrow = 'last'
+    line.attach_to(window)
+    window.render(.5)
+
+    circle.fill_color = rectangle.outline_color
+    window.render(.5)
 
 def run_test_problem2b():
     """ Tests the  problem2b   function. """
@@ -173,7 +190,7 @@ def problem2b(rect, n, delta, win):
       :type win:    rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # done: 3. Implement and test this function.
     #          Tests have been written for you (above).
     # ------------------------------------------------------------------
     # ------------------------------------------------------------------
@@ -181,6 +198,24 @@ def problem2b(rect, n, delta, win):
     #    DIFFICULTY:      7
     #    TIME ESTIMATE:   15 to 25 minutes.
     # ------------------------------------------------------------------
+
+    rect.attach_to(win)
+
+    win.render(.5)
+
+    width = (rect.get_width() / 2)
+    height = (rect.get_height() / 2)
+    center = rect.get_center()
+
+    for k in range (n):
+        corn1 = rg.Point(center.x - width - (k * delta), center.y - height
+                         +(k * delta))
+        corn2 = rg.Point(center.x - width + (k * delta), center.y - height
+                         +(k * delta))
+        rectangle = rg.Rectangle(corn1, corn2)
+        rectangle.attach_to(win)
+
+        win.render(.5)
 
 
 # ----------------------------------------------------------------------
